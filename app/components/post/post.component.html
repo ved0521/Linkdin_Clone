@@ -1,0 +1,33 @@
+<div class="w-full h-full flex flex-col gap-5">
+  <div class="bg-white shadow-md p-4 rounded-lg w-[550px]">
+    <!-- Post Header -->
+    <div class="flex items-center  ">
+      <img src="assets/profile.jpg" class="w-10 h-10 rounded-full">
+      <div>
+        <h2 class="font-bold">Anurag Shukla</h2>
+        <p class="text-sm text-gray-500">Business Development Officer</p>
+      </div>
+    </div> 
+    <!-- Post Content -->
+    <p class="mt-2">जय श्री राम 🙏🌸</p>
+    <img src="assets/post-image.jpg" class="w-full rounded-lg mt-2"> 
+    <!-- Like, Comment, Share Buttons -->
+    <div class="flex space-x-2 mt-2">
+      <button (click)="likePost()" class="p-2 hover:bg-gray-200 rounded">👍 Like ({{ likes }})</button>
+      <button (click)="showCommentBox = !showCommentBox" class="p-2 hover:bg-gray-200 rounded">💬 Comment</button>
+      <button (click)="sharePost()" class="p-2 hover:bg-gray-200 rounded">🔄 Share</button>
+    </div>  
+    <!-- Comment Box -->
+    <div *ngIf="showCommentBox" class="mt-3">
+      <input [(ngModel)]="newComment" type="text" placeholder="Write a comment..." class="w-full border p-2 rounded-lg">
+      <button (click)="addComment()" class="mt-2 bg-blue-600 text-white p-2 rounded">Post Comment</button>    
+      <!-- Display Comments -->
+      <div class="mt-3 space-y-2">
+        <div *ngFor="let comment of comments; let i = index" class="flex justify-between bg-gray-100 p-2 rounded">
+          <p>{{ comment }}</p>
+          <button (click)="deleteComment(i)" class="text-red-500">❌</button> <!-- Delete Button -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

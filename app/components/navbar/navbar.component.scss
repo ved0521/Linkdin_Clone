@@ -1,0 +1,15 @@
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .nav-item:hover {
+    color: black;
+  }
+  
+  input:focus {
+    border: 1px solid #0077b5;
+  }

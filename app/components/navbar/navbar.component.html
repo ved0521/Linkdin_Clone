@@ -1,0 +1,61 @@
+<!-- Navbar -->
+<div class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+  <div class="max-w-6xl mx-auto flex items-center justify-around p-3">
+
+    <!-- Left: Logo & Search -->
+    <div class="flex items-center space-x-4">
+      <img src="assets/Image/Lindin Icon.png" alt="LinkedIn" class="w-10 h-10">
+      <div class="relative">
+        <input type="text" [(ngModel)]="searchQuery"
+          placeholder="Search..."
+          class="bg-gray-100 px-3 py-2 pl-10 w-80 outline-none rounded-sm transition-all duration-300 hover:outline hover:outline-2 hover:outline-black focus:outline focus:outline-2 focus:outline-black">
+        <span class="absolute left-3 top-2 text-gray-500">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+      </div>
+      
+    </div>
+
+    <!-- Center: Navigation -->
+    <div class="flex gap-10 text-gray-600">
+      <div class="nav-item" (click)="selectTab('home')">
+        <span><i class="fa-solid fa-house text-2xl"></i></span><span class="text-xs">Home</span>
+      </div>
+      <div class="nav-item" (click)="selectTab('network')">
+       
+        <span> <i class="fa-solid fa-user-group text-2xl"></i></span><span class="text-xs">My Network</span>
+      </div>
+      <div class="nav-item" (click)="selectTab('jobs')">
+        <span><i class="fa-solid fa-briefcase text-2xl"></i></span><span class="text-xs">Jobs</span>
+      </div>
+      <div class="nav-item" (click)="selectTab('messages')">
+        <span><i class="fa-solid fa-comment-dots text-2xl"></i>  </span><span class="text-xs">Messaging</span>
+      </div>
+      <div class="nav-item relative cursor-pointer" (click)="clearNotifications()">
+        <span><i class="fa-solid fa-bell text-2xl"></i></span>
+        <span class="text-xs">Notifications</span>
+        <span *ngIf="notificationCount > 0" 
+          class="absolute top-0 right-3 bg-red-600 text-white text-xs px-1 rounded-full">
+          {{ notificationCount }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Right: Profile & Dropdown -->
+    <div class="relative">
+      <div class="flex items-center cursor-pointer" (click)="toggleProfileMenu()">
+        <img src="assets/Image/Profilepic.jpg" class="w-10 h-10 rounded-full border">
+        <span class="ml-2">Me ▼</span>
+      </div>
+      
+      <!-- Dropdown Menu -->
+      <div *ngIf="isProfileMenuOpen" class="absolute right-0 mt-2 bg-white shadow-md rounded-lg p-2 w-48">
+        <p class="text-gray-600 text-sm">Profile</p>
+        <p class="text-gray-600 text-sm mt-2">Settings</p>
+        <p class="text-red-500 text-sm mt-2 cursor-pointer" (click)="logout()">Logout</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
